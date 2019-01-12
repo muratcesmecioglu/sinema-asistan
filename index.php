@@ -8,7 +8,7 @@ if($method == 'POST'){
 	$json = json_decode($requestBody);
 
 	$text = $json->result->parameters->salonlar;
-
+  
 	switch ($text) {
 		case 'viaport':
 			$speech = "viaport'taki sinemada bugün oynayan filmler þunlar:";
@@ -35,7 +35,24 @@ if($method == 'POST'){
 }
 else
 {
-	echo "Method not allowed";
+?>
+{
+  "payload": {
+    "google": {
+      "expectUserResponse": true,
+      "richResponse": {
+        "items": [
+          {
+            "simpleResponse": {
+              "textToSpeech": "this is a simple response"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+<?php
 }
 
 ?>
