@@ -90,7 +90,7 @@ foreach($tamamjson["theaters"] as $key => $val) {
   }
 }
 
-echo json_encode($oynayanfilmler);
+//echo json_encode($oynayanfilmler);
 }
  
 ?>
