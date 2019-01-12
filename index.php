@@ -42,7 +42,8 @@ if($method == 'POST'){
 	switch ($text) {
 		case 'viaport':
 			//$speech = "viaport'taki sinemada bugün oynayan filmler şunlar:";
-			$speech = file_get_contents('http://murat.cesmecioglu.net/sinema/indexjson.php?sinema=viaport');
+			$speech = "İşte Viaport'taki sinemalar:\n";
+			$speech = $speech . file_get_contents('http://murat.cesmecioglu.net/sinema/indexjson.php?sinema=viaport');
 			break;
 
 		case 'bye':
