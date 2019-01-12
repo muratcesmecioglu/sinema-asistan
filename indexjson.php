@@ -70,8 +70,8 @@ $oynayanfilmler = array();
 foreach($tamamjson["theaters"] as $key => $val) {
   $salonidac = $val["id_ac"];
   foreach($val["movies"] as $filmler) {
-    //echo "<b>Film Adı: ".$tamamjson["movies"][$filmler]["title"] . "</b><br>";
-    echo $tamamjson["movies"][$filmler]["title"] . "<br>";
+    //echo "<b>Film Adı: ".$tamamjson["movies"][$filmler]["title"] . "\r\n";
+    echo $tamamjson["movies"][$filmler]["title"] . "\r\n";
     //array_push($oynayanfilmler, $tamamjson["movies"][$filmler]["title"] );
     
       foreach($tamamjson["showtimes"][$salonidac][$bugun][$filmler] as $versiyon) {
