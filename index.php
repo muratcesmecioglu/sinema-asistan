@@ -7,7 +7,7 @@ if($method == 'POST'){
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
 
-	$text = $json->result->parameters->salonlar;
+	$text = $json->queryResult->parameters->salonlar;
   
 	switch ($text) {
 		case 'viaport':
