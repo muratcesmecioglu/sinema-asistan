@@ -62,6 +62,7 @@ if($method == 'POST'){
 else
 {
 	echo "Method not allowed";
+	listele("viaport");
 }
 
  function listele($salonAdi) {
@@ -77,7 +78,7 @@ else
     foreach($tamamjson["theaters"] as $key => $val) {
     $salonidac = $val["id_ac"];
     foreach($val["movies"] as $filmler) {
-      //echo "<b>Film Adý: ".$tamamjson["movies"][$filmler]["title"] . "</b><br>";
+      echo "<b>Film Adý: ".$tamamjson["movies"][$filmler]["title"] . "</b><br>";
       $speech = $speech . $tamamjson["movies"][$filmler]["title"] . "\r\n";
       //array_push($oynayanfilmler, $tamamjson["movies"][$filmler]["title"] );
       
