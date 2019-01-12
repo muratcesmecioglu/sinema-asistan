@@ -37,7 +37,7 @@ if($method == 'POST'){
   
 	switch ($text) {
 		case 'viaport':
-			//$speech = "viaport'taki sinemada bugün oynayan filmler þunlar:";
+			//$speech = "viaport'taki sinemada bugÃ¼n oynayan filmler ÅŸunlar:";
 			//$speech = file_get_contents('http://murat.cesmecioglu.net/sinema/indexjson.php?sinema=viaport');
 			listele("viaport");
 			break;
@@ -78,7 +78,7 @@ else
     foreach($tamamjson["theaters"] as $key => $val) {
     $salonidac = $val["id_ac"];
     foreach($val["movies"] as $filmler) {
-      echo "<b>Film Adý: ".$tamamjson["movies"][$filmler]["title"] . "</b><br>";
+      echo "<b>Film AdÄ±: ".$tamamjson["movies"][$filmler]["title"] . "</b><br>";
       $speech = $speech . $tamamjson["movies"][$filmler]["title"] . "\r\n";
       //array_push($oynayanfilmler, $tamamjson["movies"][$filmler]["title"] );
       
@@ -86,7 +86,7 @@ else
           if ($versiyon["version"] == "translated") {
           //echo "->Dublaj<br>";
           } else {
-            //echo "-> Altyazýlý<br>";
+            //echo "-> AltyazÄ±lÄ±<br>";
           }
           
           //echo "__Seanslar__" . "<br>";
