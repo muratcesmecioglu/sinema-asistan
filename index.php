@@ -7,11 +7,11 @@ if($method == 'POST'){
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
 
-	$text = $json->result->parameters->salonadi;
+	$text = $json->result->parameters->salonlar;
 
 	switch ($text) {
 		case 'viaport':
-			$speech = "Viaportta oynayan filmler bunlar";
+			$speech = "viaport'taki sinemada bugün oynayan filmler þunlar:";
 			break;
 
 		case 'bye':
