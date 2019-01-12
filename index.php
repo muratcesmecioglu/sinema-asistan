@@ -23,34 +23,23 @@ if($method == 'POST'){
 			break;
 		
 		default:
-			$speech = '{
-  "payload": {
-    "google": {
-      "expectUserResponse": true,
-      "richResponse": {
-        "items": [
-          {
-            "simpleResponse": {
-              "textToSpeech": "this is a simple response"
-            }
-          }
-        ]
-      }
-    }
-  }
-}';
+			$speech = "Sorry, I didnt get that. Please ask me something else.";
 			break;
 	}
 
 	$response = new \stdClass();
-	$response->speech = $speech;
-	$response->displayText = $speech;
-	$response->source = "webhook";
-	echo json_encode($speech);
+	$response->fulfillmentText = $speech;
+	echo json_encode($response);
 }
 else
 {
 	echo "Method not allowed";
 }
+
+
+
+
+
+
 
 ?>
