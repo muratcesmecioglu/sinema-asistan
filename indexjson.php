@@ -1,10 +1,10 @@
 <?php
   include ("simple_html_dom.php");
-  /*
+  
   ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-*/
+
 function dlPage($href) {
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
@@ -71,7 +71,7 @@ foreach($tamamjson["theaters"] as $key => $val) {
   $salonidac = $val["id_ac"];
   foreach($val["movies"] as $filmler) {
     //echo "<b>Film Adı: ".$tamamjson["movies"][$filmler]["title"] . "</b><br>";
-    array_push($oynayanfilmler, $tamamjson["movies"][$filmler]["title"] ,);
+    array_push($oynayanfilmler, $tamamjson["movies"][$filmler]["title"] );
     
       foreach($tamamjson["showtimes"][$salonidac][$bugun][$filmler] as $versiyon) {
         if ($versiyon["version"] == "translated") {
