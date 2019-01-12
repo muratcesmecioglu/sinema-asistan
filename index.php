@@ -23,20 +23,7 @@ if($method == 'POST'){
 			break;
 		
 		default:
-			$speech = "Sorry, I didnt get that. Please ask me something else.";
-			break;
-	}
-
-	$response = new \stdClass();
-	$response->speech = $speech;
-	$response->displayText = $speech;
-	$response->source = "webhook";
-	echo json_encode($response);
-}
-else
-{
-?>
-{
+			$speech = '{
   "payload": {
     "google": {
       "expectUserResponse": true,
@@ -51,8 +38,19 @@ else
       }
     }
   }
+}';
+			break;
+	}
+
+	$response = new \stdClass();
+	$response->speech = $speech;
+	$response->displayText = $speech;
+	$response->source = "webhook";
+	echo json_encode($response);
 }
-<?php
+else
+{
+	echo "Method not allowed";
 }
 
 ?>
