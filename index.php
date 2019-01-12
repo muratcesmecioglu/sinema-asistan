@@ -42,46 +42,7 @@ if($method == 'POST'){
 	switch ($text) {
 		case 'viaport':
 			//$speech = "viaport'taki sinemada bugün oynayan filmler şunlar:";
-			//$speech = file_get_contents('http://murat.cesmecioglu.net/sinema/indexjson.php?sinema=viaport');
-			
-			
-			
-			  $speech = "";
-        $araurl = $salonadresleri[$text];
-        $html = dlPage($araurl);
-        $sinema = $html->find("span[class=theater-cover-title]",0)->plaintext;
-        $movielist = $html->find("section[class=js-movie-list]",0)->outertext;
-        preg_match('#<section class="section js-movie-list" data-movies-showtimes="(.*?)" data-coming-soon#', $movielist,$cikti);
-        $gelenjson = str_replace('&quot;','"',$cikti[1]);
-        $tamamjson = json_decode($gelenjson,true);
-        $bugun = date('Y-m-d');
-        foreach($tamamjson["theaters"] as $key => $val) {
-            $salonidac = $val["id_ac"];
-            foreach($val["movies"] as $filmler) {
-              //echo "<b>Film Adı: ".$tamamjson["movies"][$filmler]["title"] . "</b><br>";
-              $speech = $speech . $tamamjson["movies"][$filmler]["title"] . "\r\n";
-              //array_push($oynayanfilmler, $tamamjson["movies"][$filmler]["title"] );
-              
-                foreach($tamamjson["showtimes"][$salonidac][$bugun][$filmler] as $versiyon) {
-                  if ($versiyon["version"] == "translated") {
-                  //echo "->Dublaj<br>";
-                  } else {
-                    //echo "-> Altyazılı<br>";
-                  }
-                  
-                  //echo "__Seanslar__" . "<br>";
-                  foreach($versiyon["showtimes"] as $seans) {
-                    $tarih = date("d.m.Y H:i",strtotime($seans["showStart"]));
-                    //echo "-> ". $tarih . "<br>";
-                  }
-                }
-            }
-        }
-			
-			
-			
-			
-			
+			$speech = file_get_contents('http://murat.cesmecioglu.net/sinema/indexjson.php?sinema=viaport');
 			break;
 
 		case 'bye':
@@ -107,39 +68,7 @@ else
 	//listele("viaport");
 }
 
-function listele($salonAdi) {
-  $speech = "";
-  $araurl = $salonadresleri[$salonAdi];
-  $html = dlPage($araurl);
-  $sinema = $html->find("span[class=theater-cover-title]",0)->plaintext;
-  $movielist = $html->find("section[class=js-movie-list]",0)->outertext;
-  preg_match('#<section class="section js-movie-list" data-movies-showtimes="(.*?)" data-coming-soon#', $movielist,$cikti);
-  $gelenjson = str_replace('&quot;','"',$cikti[1]);
-  $tamamjson = json_decode($gelenjson,true);
-  $bugun = date('Y-m-d');
-  foreach($tamamjson["theaters"] as $key => $val) {
-      $salonidac = $val["id_ac"];
-      foreach($val["movies"] as $filmler) {
-        echo "<b>Film Adı: ".$tamamjson["movies"][$filmler]["title"] . "</b><br>";
-        $speech = $speech . $tamamjson["movies"][$filmler]["title"] . "\r\n";
-        //array_push($oynayanfilmler, $tamamjson["movies"][$filmler]["title"] );
-        
-          foreach($tamamjson["showtimes"][$salonidac][$bugun][$filmler] as $versiyon) {
-            if ($versiyon["version"] == "translated") {
-            //echo "->Dublaj<br>";
-            } else {
-              //echo "-> Altyazılı<br>";
-            }
-            
-            //echo "__Seanslar__" . "<br>";
-            foreach($versiyon["showtimes"] as $seans) {
-              $tarih = date("d.m.Y H:i",strtotime($seans["showStart"]));
-              //echo "-> ". $tarih . "<br>";
-            }
-          }
-      }
-  }
-}
+
 
 
 ?>
