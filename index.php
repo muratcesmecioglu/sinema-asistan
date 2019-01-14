@@ -61,7 +61,7 @@ if($method == 'POST'){
 
 	//$response = new \stdClass();
 	//$response->fulfillmentText = $speech;
-	echo json_encode($speech);
+	echo $speech;
 }
 else
 {
